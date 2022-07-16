@@ -12,4 +12,23 @@ There are many long exons in human genome. Sometimes long variants there are not
 
 As a solution, we should sub-segment our BED file. However, if we simply make overlapping windows, the coverage depth signal for the overlapping windows will be heavily correlated and confuse many existing CNV callers.
 
+# Description
 This script *sub-segments targeted regions in a smart way*, imitating the probes design procedure used by Agilent, however, useful for other kits as well. We segment regions into "segment belonging to the left probe", "overlapping segment", "segment belonging to the right probe". Then we consider the coverage of the left and the right parts as "quasi-independent" from each other and divide the coverage from the overlapping segment proportionally. It solved the problems 1 and 2 with a satisfactory accuracy.
+
+## How to run
+Imagine you have a BAM file `sample.bam` and a corresponding bed file from the exome enrichment kit `kit.bed`.
+
+At first, segment the bed file with 'probes_from_bed.py':
+
+```
+probes_from_bed.py --bed kit.bed --output supersegmented.bed --probLen 120
+```
+
+Then you calculate coverage using the `supersegmented.for_coverage.bed` file and `sample.bam`, using, for example, [ngs-bits](https://github.com/imgag/ngs-bits). After that you need to "reassemble" the coverage for `supersegmented.bed` file (use this as an input for your CNV caller instead of your original file!)
+
+To do this you need to run `merge_segmented_coverage.py`:
+
+```
+merge_segmented_coverage.py --bed supersegmented.bed --output final_assembled_coverage.cov --coverage your_existing_coverage_file_from_the_previous_step.cov
+```
+
