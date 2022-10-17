@@ -29,6 +29,6 @@ Then you calculate coverage using the `supersegmented.for_coverage.bed` file and
 To do this you need to run `merge_segmented_coverage.py`:
 
 ```
-merge_segmented_coverage.py --bed supersegmented.bed --output final_assembled_coverage.cov --coverage your_existing_coverage_file_from_the_previous_step.cov
+merge_segmented_coverage.py --bed kit.bed --output final_assembled_coverage.cov --coverage your_existing_coverage_file_from_the_previous_step.cov
 ```
 
