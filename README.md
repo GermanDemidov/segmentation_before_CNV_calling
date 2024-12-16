@@ -26,7 +26,7 @@ One button solution (using `one_button_run.sh` - be sure you have rights to writ
 
 2) change the second line of `one_button_run.sh` to point to your `.bed` file (3 columns - chromosome, start, end, GC or gene annotation of this file is not needed, no additional columns except 3).
 
-3) if `ngs-bits` is not added to `PATH`, you should change the line `BedCoverage` to the actual `/path/to/ngs-bits/BedCoverage`. 
+3) if `ngs-bits` is not added to `PATH`, you should change the line `BedCoverage` [here](https://github.com/GermanDemidov/segmentation_before_CNV_calling/blob/259191ec35c1fd28446d5e45842ee2474f33e794/one_button_run.sh#L25) to the actual `/path/to/ngs-bits/BedCoverage`. 
 
 4) Run `bash one_button_run.sh` and let me know if any errors appear during the run, we will try to fix them.
 
