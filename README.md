@@ -22,7 +22,7 @@ Imagine you have a BAM file `sample.bam` and a corresponding bed file from the e
 
 One button solution (using `one_button_run.sh` - be sure you have rights to write in this folder and run python scripts from the repository):
 
-1) change the first line of `one_button_run.sh` to point to list of absolute paths to BAM files you want to use (for example, as a result of `find /path/to/your/bams/ -name "*.bam" > list_of_files.txt`). If you use CRAM files, specify reference when you run `BedCoverage` from `ngs-bits` (uncommend `-ref`).
+1) change the first line of `one_button_run.sh` to point to list of absolute paths to BAM files you want to use (for example, as a result of `find /path/to/your/bams/ -name "*.bam" > list_of_files.txt`). If you use CRAM files, specify reference when you run `BedCoverage` from `ngs-bits` (uncomment `-ref` [here](https://github.com/GermanDemidov/segmentation_before_CNV_calling/blob/200e7d908ff311b4dd3f1ab453676da112ac144e/one_button_run.sh#L25C144-L25C185) ).
 
 2) change the second line of `one_button_run.sh` to point to your `.bed` file (3 columns - chromosome, start, end, GC or gene annotation of this file is not needed, no additional columns except 3).
 
