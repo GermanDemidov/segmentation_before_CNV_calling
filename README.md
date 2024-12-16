@@ -19,21 +19,22 @@ This script *sub-segments targeted regions in a smart way*, imitating the probes
 Imagine you have a BAM file `sample.bam` and a corresponding bed file from the exome enrichment kit `kit.bed`.
 
 ### Easy run
-One button solution (using 'one_button_run.sh' - be sure you have rights to write in this folder and run python scripts from the repository):
 
-1) change the first line of 'one_button_run.sh' to point to list of absolute paths to BAM files you want to use (for example, as a result of 'find /path/to/your/bams/ -name "*.bam" > list_of_files.txt'). If you use CRAM files, specify reference when you run 'BedCoverage' from 'ngs-bits' (uncommend '-ref').
+One button solution (using `one_button_run.sh` - be sure you have rights to write in this folder and run python scripts from the repository):
 
-2) change the second line of 'one_button_run.sh' to point to your '.bed' file (3 columns - chromosome, start, end, GC or gene annotation of this file is not needed, no additional columns except 3).
+1) change the first line of `one_button_run.sh` to point to list of absolute paths to BAM files you want to use (for example, as a result of `find /path/to/your/bams/ -name "*.bam" > list_of_files.txt`). If you use CRAM files, specify reference when you run `BedCoverage` from `ngs-bits` (uncommend `-ref`).
 
-3) if 'ngs-bits' is not added to 'PATH', you should change the line 'BedCoverage' to the actual '/path/to/ngs-bits/BedCoverage'. 
+2) change the second line of `one_button_run.sh` to point to your `.bed` file (3 columns - chromosome, start, end, GC or gene annotation of this file is not needed, no additional columns except 3).
 
-4) Run 'bash one_button_run.sh' and let me know if any errors appear during the run, we will try to fix them.
+3) if `ngs-bits` is not added to `PATH`, you should change the line `BedCoverage` to the actual `/path/to/ngs-bits/BedCoverage`. 
 
-*As a result* you will have a folder 'prepared_coverage' which you will use later with 'ClinCNV' merging routine, and a new bed file 'segmented.name_of_your_old_bed.bed'. You should further work with this new bed file (GC-annotation, genes annotation) and do not use the original!
+4) Run `bash one_button_run.sh` and let me know if any errors appear during the run, we will try to fix them.
 
-### Less easy run
+*As a result* you will have a folder `prepared_coverage` which you will use later with `ClinCNV` merging routine, and a new bed file `segmented.name_of_your_old_bed.bed`. You should further work with this new bed file (GC-annotation, genes annotation) and do not use the original!
 
-Manual run: at first, segment the bed file with 'probes_from_bed.py':
+### Not so easy run
+
+Manual run: at first, segment the bed file with `probes_from_bed.py`:
 
 ```
 probes_from_bed.py --bed kit.bed --output supersegmented.bed --probLen 120
